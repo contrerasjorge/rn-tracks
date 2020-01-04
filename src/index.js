@@ -1,15 +1,18 @@
 require('./models/User');
+require('./models/Track');
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const authRoutes = require('./routes/authRoutes');
 
+const authRoutes = require('./routes/authRoutes');
+const trackRoutes = require('./routes/trackRoutes');
 const requireAuth = require('./middlewares/requireAuth');
 
 const app = express();
 
 app.use(express.json());
 app.use(authRoutes);
+app.use(trackRoutes);
 
 const mongoUri = process.env.MONGO;
 
